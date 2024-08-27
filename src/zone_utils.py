@@ -3,6 +3,7 @@ import geopandas as gpd
 from shapely.geometry import Point
 import matplotlib.pyplot as plt
 
+
 def create_circular_zone(lat, lon, radius):
     """
     Create a circular polygon around a point defined by latitude and longitude.
@@ -15,7 +16,10 @@ def create_circular_zone(lat, lon, radius):
     Returns:
     shapely.geometry.polygon.Polygon: Circular polygon around the given point.
     """
-    return Point(lon, lat).buffer(radius / 111320)  # Convert meters to degrees (approximation)
+    return Point(lon, lat).buffer(
+        radius / 111320
+    )  # Convert meters to degrees (approximation)
+
 
 def create_zones_gdf(zones):
     """
@@ -28,9 +32,13 @@ def create_zones_gdf(zones):
     geopandas.GeoDataFrame: GeoDataFrame containing the zones as geometries.
     """
     return gpd.GeoDataFrame(
-        zones, 
-        geometry=[create_circular_zone(zone["latitude"], zone["longitude"], zone["radius"]) for zone in zones]
+        zones,
+        geometry=[
+            create_circular_zone(zone["latitude"], zone["longitude"], zone["radius"])
+            for zone in zones
+        ],
     )
+
 
 def save_zones_to_geojson(gdf, filepath):
     """
@@ -42,6 +50,7 @@ def save_zones_to_geojson(gdf, filepath):
     """
     gdf.to_file(filepath, driver="GeoJSON")
 
+
 def plot_zones(G, no_fly_zones_gdf, avoidance_zones_gdf):
     """
     Plot the road network with no-fly zones and avoidance zones overlaid.
@@ -51,15 +60,24 @@ def plot_zones(G, no_fly_zones_gdf, avoidance_zones_gdf):
     no_fly_zones_gdf (geopandas.GeoDataFrame): GeoDataFrame containing no-fly zones.
     avoidance_zones_gdf (geopandas.GeoDataFrame): GeoDataFrame containing avoidance zones.
     """
-    fig, ax = ox.plot_graph(G, node_size=0.1, bgcolor='k', node_color='r', edge_linewidth=0.5, show=False, close=False)
+    fig, ax = ox.plot_graph(
+        G,
+        node_size=0.1,
+        bgcolor="k",
+        node_color="r",
+        edge_linewidth=0.5,
+        show=False,
+        close=False,
+    )
 
     # Plot the no-fly zones as red transparent circles
-    no_fly_zones_gdf.plot(ax=ax, color='red', alpha=0.3)
+    no_fly_zones_gdf.plot(ax=ax, color="red", alpha=0.3)
 
     # Plot the avoidance zones as yellow transparent circles
-    avoidance_zones_gdf.plot(ax=ax, color='yellow', alpha=0.3)
+    avoidance_zones_gdf.plot(ax=ax, color="yellow", alpha=0.3)
 
     plt.show()
+
 
 def clear_existing_maps(map_directory):
     """
