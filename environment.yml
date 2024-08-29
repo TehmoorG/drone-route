@@ -13,5 +13,4 @@ dependencies:
   - matplotlib
   - pip
   - pip:
-    - subprocess
     - pickle-mixin
