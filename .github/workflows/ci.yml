@@ -23,15 +23,15 @@ jobs:
       with:
         python-version: 3.11
         environment-file: environment.yml
-        activate-environment: drone_env  # Ensure this matches the environment name
+        activate-environment: drone_env
         auto-activate-base: false
 
     - name: Run Tests
       run: |
-        source activate drone_env  # Activate the conda environment
+        conda activate drone_env
         pytest tests/
 
     - name: Run Flake8
       run: |
-        source activate drone_env  # Activate the conda environment
+        conda activate drone_env
         flake8 .
