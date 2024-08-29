@@ -5,7 +5,18 @@ import pandas as pd
 from scripts.generate_simple_route import main as simple_route_main
 from scripts.generate_advanced_route import main as advanced_route_main
 
-@patch('builtins.input', side_effect=['7', '1.5', '5.576227677008859', '-0.137573559298005', '5.643041503585579', '-0.235185096524191'])
+
+@patch(
+    "builtins.input",
+    side_effect=[
+        "7",
+        "1.5",
+        "5.576227677008859",
+        "-0.137573559298005",
+        "5.643041503585579",
+        "-0.235185096524191",
+    ],
+)
 def test_simple_route(mock_input):
     # Run the simple route generation
     simple_route_main()
@@ -19,11 +30,22 @@ def test_simple_route(mock_input):
         ("End", 5.643041503585579, -0.235185096524191),
     ]
     for idx, row in df.iterrows():
-        assert (row['label'], row['lat'], row['longitude']) == expected_route[idx]
+        assert (row["label"], row["lat"], row["longitude"]) == expected_route[idx]
     # Optionally keep or remove the file after validation
     os.remove("../output/drone_route.csv")
 
-@patch('builtins.input', side_effect=['7', '1.5', '5.576227677008859', '-0.137573559298005', '5.643041503585579', '-0.235185096524191'])
+
+@patch(
+    "builtins.input",
+    side_effect=[
+        "7",
+        "1.5",
+        "5.576227677008859",
+        "-0.137573559298005",
+        "5.643041503585579",
+        "-0.235185096524191",
+    ],
+)
 def test_advanced_route(mock_input):
     # Run the advanced route generation
     advanced_route_main()
@@ -37,6 +59,6 @@ def test_advanced_route(mock_input):
         ("End", 5.643041503585579, -0.235185096524191),
     ]
     for idx, row in df.iterrows():
-        assert (row['label'], row['lat'], row['longitude']) == expected_route[idx]
+        assert (row["label"], row["lat"], row["longitude"]) == expected_route[idx]
     # Optionally keep or remove the file after validation
     os.remove("../output/advanced_drone_route.csv")

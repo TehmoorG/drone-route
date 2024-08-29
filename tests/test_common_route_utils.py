@@ -15,6 +15,7 @@ import pickle
 from src.common_route_utils import get_coordinates, load_graph, save_route_to_csv
 from tests.utils import create_test_graph
 
+
 def test_load_graph():
     G = create_test_graph()
     with open("../output/test_graph.gpickle", "wb") as f:
@@ -24,9 +25,10 @@ def test_load_graph():
     assert len(loaded_G.nodes) == len(G.nodes)
     os.remove("../output/test_graph.gpickle")
 
+
 def test_save_route_to_csv():
     G = create_test_graph()
-    pos = nx.get_node_attributes(G, 'pos')
+    pos = nx.get_node_attributes(G, "pos")
     save_route_to_csv(G, [0, 1, 2, 3], pos, "../output/test_route.csv")
     df = pd.read_csv("../output/test_route.csv")
     assert len(df) == 4
