@@ -7,13 +7,13 @@ creating and saving a network graph with advanced constraints, and adding new no
 
 Functions:
 - segment_edge(line, segment_length): Segments a line into smaller segments of specified length.
-- calculate_segment_weight(segment, roads_gdf, buildings_gdf, open_space_gdf, avoidance_zones_gdf): 
+- calculate_segment_weight(segment, roads_gdf, buildings_gdf, open_space_gdf, avoidance_zones_gdf):
   Calculates the weight of a segment based on intersection with roads, buildings, open spaces, and avoidance zones.
-- calculate_edge_weight(line, roads_gdf, buildings_gdf, open_space_gdf, avoidance_zones_gdf): 
+- calculate_edge_weight(line, roads_gdf, buildings_gdf, open_space_gdf, avoidance_zones_gdf):
   Calculates the total weight of an edge by summing the weights of its segments.
-- create_and_save_graph(health_facilities_gdf, roads_gdf, buildings_gdf, open_space_gdf, no_fly_zones_gdf, avoidance_zones_gdf, drone_range_km, output_path): 
+- create_and_save_graph(health_facilities_gdf, roads_gdf, buildings_gdf, open_space_gdf, no_fly_zones_gdf, avoidance_zones_gdf, drone_range_km, output_path):
   Creates a network graph with advanced constraints and saves it to a file.
-- add_node_to_graph(G, lat, lon, node_name, health_facilities_gdf, roads_gdf, buildings_gdf, open_space_gdf, no_fly_zones_gdf, avoidance_zones_gdf, drone_range_km): 
+- add_node_to_graph(G, lat, lon, node_name, health_facilities_gdf, roads_gdf, buildings_gdf, open_space_gdf, no_fly_zones_gdf, avoidance_zones_gdf, drone_range_km):
   Adds a new node to the existing graph, considering advanced constraints.
 - download_land_use_data(place_name): Downloads land use data (roads, buildings, open spaces) for a specified place using OSMnx.
 """

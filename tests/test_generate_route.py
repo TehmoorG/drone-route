@@ -1,5 +1,4 @@
 from unittest.mock import patch
-import pytest
 import os
 import pandas as pd
 from scripts.generate_simple_route import main as simple_route_main

@@ -1,9 +1,8 @@
 # tests/utils.py
-import os
 import pandas as pd
 import geopandas as gpd
 import networkx as nx
-from shapely.geometry import Point, Polygon
+from shapely.geometry import Polygon
 
 
 def mock_healthcare_facilities():

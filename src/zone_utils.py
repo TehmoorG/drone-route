@@ -2,6 +2,8 @@ import osmnx as ox
 import geopandas as gpd
 from shapely.geometry import Point
 import matplotlib.pyplot as plt
+import os
+import glob
 
 
 def create_circular_zone(lat, lon, radius):

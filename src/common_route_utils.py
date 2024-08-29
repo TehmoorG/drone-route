@@ -36,8 +36,7 @@ def get_coordinates(lat_range, lon_range):
 
             # Validate if the coordinates are within the specified bounds
             if (
-                lat_range[0] <= latitude <= lat_range[1]
-                and lon_range[0] <= longitude <= lon_range[1]
+                lat_range[0] <= latitude <= lat_range[1] and lon_range[0] <= longitude <= lon_range[1]
             ):
                 print(
                     f"Coordinates ({latitude}, {longitude}) are valid within the specified range."

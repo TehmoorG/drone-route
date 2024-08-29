@@ -8,11 +8,10 @@ current_dir = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.abspath(os.path.join(current_dir, "..")))
 
 
-import pytest
 import networkx as nx
 import pandas as pd
 import pickle
-from src.common_route_utils import get_coordinates, load_graph, save_route_to_csv
+from src.common_route_utils import save_route_to_csv
 from tests.utils import create_test_graph
 
 

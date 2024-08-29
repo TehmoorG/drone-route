@@ -6,9 +6,9 @@ It includes functions for creating and saving a network graph of healthcare faci
 as well as adding new nodes (locations) to the graph while considering no-fly zones and avoidance areas.
 
 Functions:
-- create_and_save_graph(health_facilities_gdf, no_fly_zones_gdf, avoidance_zones_gdf, drone_range_km, output_path): 
+- create_and_save_graph(health_facilities_gdf, no_fly_zones_gdf, avoidance_zones_gdf, drone_range_km, output_path):
   Creates a network graph based on healthcare facilities and saves it to a file.
-- add_node_to_graph(G, lat, lon, node_name, health_facilities_gdf, no_fly_zones_gdf, avoidance_zones_gdf, drone_range_km): 
+- add_node_to_graph(G, lat, lon, node_name, health_facilities_gdf, no_fly_zones_gdf, avoidance_zones_gdf, drone_range_km):
   Adds a new node to the existing graph, connecting it to other nodes based on proximity and constraints.
 """
 
