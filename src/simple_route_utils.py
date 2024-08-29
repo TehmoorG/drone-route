@@ -12,7 +12,6 @@ Functions:
   Adds a new node to the existing graph, connecting it to other nodes based on proximity and constraints.
 """
 
-import geopandas as gpd
 import networkx as nx
 from shapely.geometry import Point, LineString
 from geopy.distance import geodesic
