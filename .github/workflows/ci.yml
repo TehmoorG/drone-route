@@ -18,26 +18,18 @@ jobs:
     - name: Check out the repository
       uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
+    - name: Set up Conda
+      uses: conda-incubator/setup-miniconda@v2
       with:
-        python-version: '3.11'
-
-    - name: Install dependencies
-      run: |
-        python -m venv venv
-        source venv/bin/activate
-        pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install flake8 pytest
-        pip install -e .
+        python-version: 3.11
+        environment-file: environment.yml
+        activate-environment: drone-env  # Replace with your environment name
+        auto-activate-base: false
 
     - name: Run Tests
       run: |
-        source venv/bin/activate
         pytest tests/
 
     - name: Run Flake8
       run: |
-        source venv/bin/activate
         flake8 .
