@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: Flake8 Linting
 
 on:
   push:
@@ -11,29 +11,22 @@ on:
       - master
 
 jobs:
-  build-and-test:
+  flake8-lint:
     runs-on: ubuntu-latest
 
     steps:
     - name: Check out the repository
       uses: actions/checkout@v3
 
-    - name: Set up Conda
-      uses: conda-incubator/setup-miniconda@v2
+    - name: Set up Python
+      uses: actions/setup-python@v4
       with:
-        python-version: 3.11
-        environment-file: environment.yml
-        activate-environment: drone_env  # Ensure this matches the environment name
-        auto-activate-base: false
+        python-version: '3.11'
 
-    - name: Initialize Conda
+    - name: Install dependencies
       run: |
-        eval "$(conda shell.bash hook)"
-        conda activate drone_env
-        pytest tests/
+        pip install --upgrade pip
+        pip install flake8
 
     - name: Run Flake8
-      run: |
-        eval "$(conda shell.bash hook)"
-        conda activate drone_env
-        flake8 .
+      run: flake8 .
